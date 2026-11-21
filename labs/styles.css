@@ -3,6 +3,7 @@
 }
 
 :root {
+  color-scheme: light;
   --color-background: #f4f5f7;
   --color-surface: #ffffff;
   --color-text: #1f2328;
@@ -13,6 +14,20 @@
   --color-danger: #cf222e;
   --color-danger-hover: #fff0f0;
   --color-shadow: rgba(31, 35, 40, 0.08);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-background: #171a1f;
+  --color-surface: #22272e;
+  --color-text: #e6edf3;
+  --color-muted: #9da7b3;
+  --color-border: #444c56;
+  --color-accent: #3fb950;
+  --color-accent-hover: #2ea043;
+  --color-danger: #ff7b72;
+  --color-danger-hover: #3d2426;
+  --color-shadow: rgba(0, 0, 0, 0.28);
 }
 
 body {
@@ -37,16 +52,34 @@ body {
   box-shadow: 0 1px 3px var(--color-shadow);
 }
 
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
 h1 {
-  margin: 0 0 20px;
+  margin: 0;
   font-size: 1.5rem;
-  text-align: center;
+}
+
+.btn-theme {
+  flex-shrink: 0;
+  padding: 8px 10px;
+  color: var(--color-text);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font: inherit;
+  cursor: pointer;
 }
 
 .todo-form {
   display: flex;
   gap: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .todo-input {
@@ -79,6 +112,29 @@ button:focus-visible {
 
 .btn-add:hover {
   background: var(--color-accent-hover);
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.btn-filter {
+  padding: 7px 12px;
+  color: var(--color-muted);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.btn-filter[aria-pressed="true"] {
+  color: var(--color-surface);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  font-weight: 600;
 }
 
 .todo-list {
@@ -169,11 +225,28 @@ button:focus-visible {
     padding: 16px;
   }
 
+  .app-header {
+    align-items: flex-start;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
+
   .todo-form {
     flex-direction: column;
   }
 
   .btn-add {
     width: 100%;
+  }
+
+  .filters {
+    gap: 6px;
+  }
+
+  .btn-filter {
+    flex: 1;
+    padding: 7px 6px;
   }
 }

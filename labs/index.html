@@ -9,7 +9,10 @@
 </head>
 <body>
   <main class="app">
-    <h1>我的待辦清單</h1>
+    <header class="app-header">
+      <h1>我的待辦清單</h1>
+      <button id="theme-toggle" class="btn-theme" type="button"></button>
+    </header>
 
     <form id="todo-form" class="todo-form" autocomplete="off">
       <label class="sr-only" for="todo-input">待辦事項內容</label>
@@ -22,6 +25,12 @@
       >
       <button class="btn-add" type="submit">新增</button>
     </form>
+
+    <nav class="filters" aria-label="篩選待辦事項">
+      <button class="btn-filter" type="button" data-filter="all" aria-pressed="true">全部</button>
+      <button class="btn-filter" type="button" data-filter="active" aria-pressed="false">未完成</button>
+      <button class="btn-filter" type="button" data-filter="completed" aria-pressed="false">已完成</button>
+    </nav>
 
     <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
     <p id="empty-state" class="empty-state">還沒有任何待辦事項,新增一個吧!</p>
