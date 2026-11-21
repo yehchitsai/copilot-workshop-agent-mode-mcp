@@ -112,9 +112,9 @@ function render() {
 
   emptyState.hidden = visibleTodos.length > 0;
   if (activeFilter === 'active') {
-    emptyState.textContent = '沒有未完成的待辦事項。';
+    emptyState.textContent = '目前沒有未完成的事項。項目仍會保留，可切換到「全部」查看。';
   } else if (activeFilter === 'completed') {
-    emptyState.textContent = '沒有已完成的待辦事項。';
+    emptyState.textContent = '目前沒有已完成的事項。項目仍會保留，可切換到「全部」查看。';
   } else {
     emptyState.textContent = '還沒有任何待辦事項,新增一個吧!';
   }
