@@ -7,7 +7,7 @@ on:
     paths:
       - 'labs/index.html'
       - 'labs/styles.css'
-      - 'app.js'
+      - 'labs/app.js'
   # 保險機制:卡關時可以到 Actions 頁籤手動執行這支 workflow 強制推進
   workflow_dispatch:
 
@@ -66,14 +66,14 @@ jobs:
         continue-on-error: true
         uses: skills/exercise-toolkit/actions/file-exists@v0.9.3
         with:
-          file: 'index.html'
+          file: 'labs/index.html'
 
       - name: Check if app.js exists
         id: check-app-js
         continue-on-error: true
         uses: skills/exercise-toolkit/actions/file-exists@v0.9.3
         with:
-          file: 'app.js'
+          file: 'labs/app.js'
 
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1
