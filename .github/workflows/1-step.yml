@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - 'index.html'
-      - 'styles.css'
+      - 'labs/index.html'
+      - 'labs/styles.css'
       - 'app.js'
   # 保險機制:卡關時可以到 Actions 頁籤手動執行這支 workflow 強制推進
   workflow_dispatch:
