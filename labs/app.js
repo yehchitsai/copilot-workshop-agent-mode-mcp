@@ -8,6 +8,7 @@ const list = document.getElementById('todo-list');
 const emptyState = document.getElementById('empty-state');
 const remainingCount = document.getElementById('remaining-count');
 const themeToggle = document.getElementById('theme-toggle');
+const clearCompletedButton = document.getElementById('clear-completed');
 const filterButtons = document.querySelectorAll('.btn-filter');
 const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -120,7 +121,9 @@ function render() {
   }
 
   const remaining = todos.filter((todo) => !todo.completed).length;
+  const completedCount = todos.filter((todo) => todo.completed).length;
   remainingCount.textContent = `未完成:${remaining} 項`;
+  clearCompletedButton.disabled = completedCount === 0;
 }
 
 // 新增一筆待辦，使用時間與隨機字串組成識別碼。
@@ -165,6 +168,24 @@ systemTheme.addEventListener('change', () => {
   if (themePreference === null) {
     applyTheme();
   }
+});
+
+clearCompletedButton.addEventListener('click', () => {
+  const completedCount = todos.filter((todo) => todo.completed).length;
+  if (completedCount === 0) {
+    return;
+  }
+
+  const confirmed = window.confirm(
+    `確定要清除全部 ${completedCount} 筆已完成的事項嗎？此操作無法復原。`
+  );
+  if (!confirmed) {
+    return;
+  }
+
+  todos = todos.filter((todo) => !todo.completed);
+  saveTodos();
+  render();
 });
 
 filterButtons.forEach((button) => {
